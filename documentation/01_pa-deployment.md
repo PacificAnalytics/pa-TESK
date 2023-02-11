@@ -44,5 +44,15 @@ note:
 ```
 minikube ip
 ``` 
-will not output an ip which is not directly accessible
+will output an ip which is not directly accessible
 
+
+You should be able to see an empty list of tasks by calling
+```
+http://external_IP_of_a_node:31567/v1/tasks
+
+{
+  "tasks" : [ ]
+}
+
+```
