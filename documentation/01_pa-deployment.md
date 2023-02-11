@@ -32,3 +32,17 @@ install on namespane "tesk" (at current stage not neccessary) -  will only work 
 helm upgrade --install tesk-release . -f secrets.yaml -f values.yaml -n tesk
 ```
 
+get reachable ip:
+get IPv4-Adresse from Ethernet-Adapter vEthernet (WSL), on windows machine run:
+
+```
+ipconfig
+```
+
+note:
+
+```
+minikube ip
+``` 
+will not output an ip which is not directly accessible
+
