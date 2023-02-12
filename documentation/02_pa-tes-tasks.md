@@ -6,7 +6,7 @@
 
 
 ## 1 Tesk Tasks via Repo
-### 1.1 Setup URL
+### 1.1 Configuration
 configure `examples/taskList` and `examples/taskCreate` by replacing the URL by the URL from your cluster (IPv4 Ethernet WSL) -> `ipconfig` on windows host machine
 
 
@@ -37,7 +37,36 @@ curl <baseurl:port>/v1/tasks/<task-name>
 ```
 
 
-## 1.5 Check Cluster Logs
+
+## 2 Tesk Tasks via curl
+
+### 2.1 List Tasks 
+### 2.2 Create Task
+in project root folder:
+
+```
+curl.exe -H 'Content-Type: application/json' --data  '@examples/success/stdout.json' -X POST 'http://172.19.128.1:31567/v1/tasks'
+```
+
+
+### 2.3 Show Task
+
+
+
+## 3 Tesk Tasks via Postman
+
+### 3.1 Configuration
+imort collection
+
+from /examples import GA4GH.postman_collection.json into postman
+
+change your base url in the requests
+
+
+
+
+##  4 Minikube
+## 4.1 Check minikube Cluster Logs
 run
 ```
 minikube dashboard
@@ -45,9 +74,9 @@ minikube dashboard
 and go to "jobs". here you should have a list of running jobs.  see logs for details.
 
 
-## 2 Troubleshooting
+## 5 Troubleshooting
 
-### JSON Unicode Error UTF-8
+### 5.1 JSON Unicode Error UTF-8
 UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte
 
 -> will not work via cwl-tes
@@ -58,4 +87,4 @@ UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid 
 -->> WHY?
 
 
-## Scripts not working on windows powershell, need to use ubuntu wsl
+### Scripts not working on windows powershell, need to use ubuntu wsl
