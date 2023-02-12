@@ -1,14 +1,24 @@
 # Deployment instructions for TESK
 
+## 00 Prerequisities 
+We assume you have installed
+- docker
+- helm
+- ubuntu wsl
 
-start docker
+and you are running a minikube cluster on windows host machine.
+
+## 01 Start Service
+
+### start docker
 
 start minikube with docker-driver and expose port 31567 (nodeport - see values.yml)
 ```
 minikube start --driver=docker --ports=31567:31567
 ```
 
-create secrets.yaml in charts/tesk with following content:
+### create secrets
+create secrets.yaml in charts/tesk with following content for a basic startup of the application:
 ```
 ftp:
   username: <username>
@@ -19,21 +29,19 @@ auth:
   client_secret: <client_secret>
 ```
 
+### Install Tesk via Helm
 go to charts/tesk
 ```
 cd charts/tesk
 ```
 
-install tesk via helm:
+install tesk:
+windows command line / powershell
 ```
 helm upgrade --install tesk-release . -f secrets.yaml -f values.yaml
 ```
 
-create clusterrole and binding (otherwise there will be an error "cannot create ressource"):
-```
-kubectl create clusterrolebinding taskmaster --clusterrole cluster-admin --serviceaccount=default:taskmaster
-```
-
+or:
 
 install on namespace "tesk" (at current stage not neccessary) -  will only work if you set up the namespace via kubectl
 ```
@@ -46,8 +54,14 @@ docker port minikube
 ```
 
 output should show (along your other open ports):
-31567/tcp -> 0.0.0.0:31567
+`31567/tcp -> 0.0.0.0:31567`
 
+
+
+create clusterrole and binding (otherwise there will be an error "cannot create ressource"):
+```
+kubectl create clusterrolebinding taskmaster --clusterrole cluster-admin --serviceaccount=default:taskmaster
+```
 
 get reachable ip:
 get IPv4-Adresse from Ethernet-Adapter vEthernet (WSL), on windows machine run:

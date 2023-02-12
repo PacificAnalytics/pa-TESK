@@ -1,0 +1,31 @@
+# Test instructions for TESK
+
+## Requisities
+-> pa-tesk deployed via helm/minikube/docker on windows machine with exposed port on 31567 (see 01_pa-deployment.md)
+
+
+## 01 Setup URL
+configure `examples/taskList` and `examples/taskCreate` by replacing the URL by the URL from your cluster (IPv4 Ethernet WSL) -> `ipconfig` on windows host machine
+
+
+## 02 List Tasks
+in project root directory:
+ubuntu wsl
+
+```
+./examples/taskList 
+```
+-> if it throws an error, try dos2unix ./examples/taskList and run the script again
+
+
+## Create Tasks
+in project root directory:
+ubuntu wsl
+
+```
+./examples/taskCreate examples/success/hello.json
+```
+
+
+
+# Troubleshooting
