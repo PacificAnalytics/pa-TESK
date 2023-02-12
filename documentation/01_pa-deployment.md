@@ -8,16 +8,16 @@ We assume you have installed
 
 and you are running a minikube cluster on windows host machine.
 
-## 01 Start Service on windows machine
+## 1 Start Service on windows machine
 
-### start docker
+### 1.1 start docker
 
 start minikube with docker-driver and expose port 31567 (nodeport - see values.yml)
 ```
 minikube start --driver=docker --ports=31567:31567
 ```
 
-### create secrets
+### 1.2 create secrets
 create secrets.yaml in charts/tesk with following content for a basic startup of the application:
 ```
 ftp:
@@ -29,7 +29,7 @@ auth:
   client_secret: <client_secret>
 ```
 
-### Install Tesk via Helm
+### 1.3 Install Tesk via Helm
 go to charts/tesk
 ```
 cd charts/tesk
@@ -48,8 +48,8 @@ install on namespace "tesk" (at current stage not neccessary) -  will only work 
 helm upgrade --install tesk-release . -f secrets.yaml -f values.yaml -n tesk
 ```
 
-### Accessibility
-#### confirm port-forwarding:
+### 1.4 Accessibility
+#### 1.4.1 confirm port-forwarding:
 ```
 docker port minikube
 ```
@@ -57,7 +57,7 @@ docker port minikube
 output should show (along your other open ports):
 `31567/tcp -> 0.0.0.0:31567`
 
-#### get reachable ip:
+#### 1.4.2 get reachable ip:
 on windows machine run:
 
 ```
@@ -67,7 +67,7 @@ get IPv4-Adresse from Ethernet-Adapter vEthernet (WSL).
 copy that ip and insert it in the url request below.
 
 
-### Clusterroles
+### 1.5 Clusterroles
 create clusterrole and binding (otherwise there will be an error "cannot create ressource" when creating a task):
 ```
 kubectl create clusterrolebinding taskmaster --clusterrole cluster-admin --serviceaccount=default:taskmaster
