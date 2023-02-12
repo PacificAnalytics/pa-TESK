@@ -8,7 +8,7 @@ We assume you have installed
 
 and you are running a minikube cluster on windows host machine.
 
-## 01 Start Service
+## 01 Start Service on windows machine
 
 ### start docker
 
@@ -64,11 +64,13 @@ kubectl create clusterrolebinding taskmaster --clusterrole cluster-admin --servi
 ```
 
 get reachable ip:
-get IPv4-Adresse from Ethernet-Adapter vEthernet (WSL), on windows machine run:
+on windows machine run:
 
 ```
 ipconfig
 ```
+get IPv4-Adresse from Ethernet-Adapter vEthernet (WSL).
+copy that ip and insert it in the url request below.
 
 
 You should be able to see an empty list of tasks by calling
@@ -81,6 +83,8 @@ http://vEthernet_WSL_IPv4:31567/v1/tasks
 
 ```
 
+
+--> you can now head over to 02_pa-tesk-tasks.md for testing the tes functionality
 
 
 - current:

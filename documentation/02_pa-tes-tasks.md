@@ -18,6 +18,7 @@ ubuntu wsl
 -> if it throws an error, try dos2unix ./examples/taskList and run the script again
 
 
+
 ## Create Tasks
 in project root directory:
 ubuntu wsl
@@ -29,3 +30,13 @@ ubuntu wsl
 
 
 # Troubleshooting
+
+## JSON Unicode Error UTF-8
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte
+
+-> will not work via cwl-tes
+-> will not work via tesk scripts
+-> will not work via postman
+
+
+-->> WHY?
