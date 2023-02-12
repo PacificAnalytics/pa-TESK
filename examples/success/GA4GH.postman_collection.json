@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "003d0f2f-79cf-4665-bc98-8a713e3be058",
+		"name": "GA4GH",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25388214"
+	},
+	"item": [
+		{
+			"name": "WES",
+			"item": [
+				{
+					"name": "GET WES Specific Run",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/ga4gh/wes/v1/runs/80cf1f59-c7de-445a-a431-34f85734eef3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ga4gh",
+								"wes",
+								"v1",
+								"runs",
+								"80cf1f59-c7de-445a-a431-34f85734eef3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WES Service Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/ga4gh/wes/v1/service-info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ga4gh",
+								"wes",
+								"v1",
+								"service-info"
+							]
+						},
+						"description": "GET WES Service Info\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "GET WES Runs",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true,
+							"content-length": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "workflowType",
+									"value": " NEXTFLOW,",
+									"type": "text"
+								},
+								{
+									"key": "workflowType_version",
+									"value": " 21.04.0,",
+									"type": "text"
+								},
+								{
+									"key": "workflow_url",
+									"value": " https://github.com/jb-adams/md5-nf,",
+									"type": "text"
+								},
+								{
+									"key": "workflow_params",
+									"value": " {\"file_int\": 3}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/ga4gh/wes/v1/runs/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ga4gh",
+								"wes",
+								"v1",
+								"runs",
+								""
+							]
+						},
+						"description": "POST WES Runs"
+					},
+					"response": []
+				},
+				{
+					"name": "POST WES Runs <- eigtl richtig",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true,
+							"content-length": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "workflowType",
+									"value": " NEXTFLOW,",
+									"type": "text"
+								},
+								{
+									"key": "workflowType_version",
+									"value": " 21.04.0,",
+									"type": "text"
+								},
+								{
+									"key": "workflow_url",
+									"value": " https://github.com/jb-adams/md5-nf,",
+									"type": "text"
+								},
+								{
+									"key": "workflow_params",
+									"value": " {\"file_int\": 3}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/ga4gh/wes/v1/runs/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ga4gh",
+								"wes",
+								"v1",
+								"runs",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DRS",
+			"item": [
+				{
+					"name": "GET DRS Service Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4502/ga4gh/drs/v1/service-info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4502",
+							"path": [
+								"ga4gh",
+								"drs",
+								"v1",
+								"service-info"
+							]
+						},
+						"description": "GET DRS Service Info"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TES",
+			"item": [
+				{
+					"name": "GET TES Tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:31567/v1/tasks",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "31567",
+							"path": [
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST TES TASK stdout.json",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "stdout.json",
+									"type": "file",
+									"src": "/D:/Coding/PA - Pacific Analytics/pa-TESK/examples/success/stdout.json"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:64207/v1/tasks",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "64207",
+							"path": [
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
