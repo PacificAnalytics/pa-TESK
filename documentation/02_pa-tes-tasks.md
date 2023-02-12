@@ -76,7 +76,24 @@ and go to "jobs". here you should have a list of running jobs.  see logs for det
 
 ## 5 Troubleshooting
 
-### 5.1 JSON Unicode Error UTF-8
+### 5.1 HTTP 500
+
+2023-02-12 16:32:31.598 TRACE 1 --- [nio-8080-exec-1] u.a.e.t.t.k.s.KubernetesClientWrapper    : ApiException ResponseBody: {"kind":"Status","apiVersion":"v1","metadata":{},"status":"Failure","message":"configmaps is forbidden: User \"system:serviceaccount:tesk:taskmaster\" cannot create resource \"configmaps\" in API group \"\" in the namespace \"tesk\"","reason":"Forbidden","details":{"kind":"configmaps"},"code":403}
+
+try for namespace tesk:
+```
+kubectl create clusterrolebinding taskmaster --clusterrole cluster-admin --serviceaccount=tesk:taskmaster
+```
+
+try for namespace default:
+```
+kubectl create clusterrolebinding taskmaster --clusterrole cluster-admin --serviceaccount=default:taskmaster
+```
+maybe you need to restart your cluster.
+
+### 5.2 JSON Unicode Error UTF-8
+minikube cluster log output:
+
 UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte
 
 -> will not work via cwl-tes
