@@ -48,7 +48,8 @@ install on namespace "tesk" (at current stage not neccessary) -  will only work 
 helm upgrade --install tesk-release . -f secrets.yaml -f values.yaml -n tesk
 ```
 
-confirm port-forwarding:
+### Accessibility
+#### confirm port-forwarding:
 ```
 docker port minikube
 ```
@@ -56,14 +57,7 @@ docker port minikube
 output should show (along your other open ports):
 `31567/tcp -> 0.0.0.0:31567`
 
-
-
-create clusterrole and binding (otherwise there will be an error "cannot create ressource"):
-```
-kubectl create clusterrolebinding taskmaster --clusterrole cluster-admin --serviceaccount=default:taskmaster
-```
-
-get reachable ip:
+#### get reachable ip:
 on windows machine run:
 
 ```
@@ -71,6 +65,13 @@ ipconfig
 ```
 get IPv4-Adresse from Ethernet-Adapter vEthernet (WSL).
 copy that ip and insert it in the url request below.
+
+
+### Clusterroles
+create clusterrole and binding (otherwise there will be an error "cannot create ressource" when creating a task):
+```
+kubectl create clusterrolebinding taskmaster --clusterrole cluster-admin --serviceaccount=default:taskmaster
+```
 
 
 You should be able to see an empty list of tasks by calling
@@ -91,5 +92,3 @@ http://vEthernet_WSL_IPv4:31567/v1/tasks
 cwl-tes can reach the service.
 test recognizes the request and starts jobs.
 jobs are not executed correctly -> error: UnicodeDecodeError: "'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte"
-minikube addons enable ingress
-minikube dashboard
