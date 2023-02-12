@@ -20,7 +20,7 @@ install tesk via helm:
 helm upgrade --install tesk-release . -f secrets.yaml -f values.yaml
 ```
 
-create clusterrole and binding:
+create clusterrole and binding (otherwise there will be an error "cannot create ressource"):
 ```
 kubectl create clusterrolebinding taskmaster --clusterrole cluster-admin --serviceaccount=default:taskmaster
 ```
@@ -58,5 +58,11 @@ http://vEthernet_WSL_IPv4:31567/v1/tasks
 
 ```
 
+
+
+- current:
+cwl-tes can reach the service.
+test recognizes the request and starts jobs.
+jobs are not executed correctly -> error: UnicodeDecodeError: "'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte"
 minikube addons enable ingress
 minikube dashboard
