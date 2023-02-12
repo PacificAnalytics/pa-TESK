@@ -24,7 +24,7 @@
 # | kube-system | kubernetes-dashboard | No node port                |
 # |-------------|----------------------|-----------------------------|
 
-baseUrl='http://192.168.99.100:31209'
+baseUrl='http://172.19.128.1:31567'
 
 jsonFile="$1"
 
