@@ -8,7 +8,16 @@ start minikube with docker-driver and expose port 31567 (nodeport - see values.y
 minikube start --driver=docker --ports=31567:31567
 ```
 
+create secrets.yaml in charts/tesk with following content:
+```
+ftp:
+  username: <username>
+  password: <password>
 
+auth:
+  client_id: <client_id>
+  client_secret: <client_secret>
+```
 
 go to charts/tesk
 ```
