@@ -54,10 +54,10 @@ service:
     # use:
     # - NodePort, if you want to expose API directly
     # - LoadBalancer for cloud provider (gcloud) or empty otherwise
-    type: NodePort
-    node_port: 31567
-    #type: ""
-    #node_port: ""
+    #type: NodePort
+    #node_port: 31567
+    type: ""
+    node_port: ""
 
 ftp:
     # If you need FTP configuration, choose one of the 2 methods of providing credentials
@@ -70,17 +70,17 @@ ftp:
     # Put the IP under which your pods see see services running on your host (differs depending on the way you installes K8s)
     # For virtualBox, it is 192.168.99.1 and your ftp service will be visible under ftp name
     # You will be able to use it like this: ftp://ftp/file
-    hostip:
+    hostip: 
 
 #
 # Configure this, only if you choose "kubernetes" as "clusterTYpe"
 #
 ingress:
 
-    active: false
+    active: true
     # The path, where TESK API will be exposed.
     # path: /tes
-    path: /
+    path: "/tes"
     # If no TLS secret name configured, TLS will be switched off
     tls_secret_name:
     # Annotations for Ingress Resource.
@@ -95,18 +95,18 @@ ingress:
         # This provides installation of one specific Ingress Controller https://github.com/nginxinc/kubernetes-ingress
         # You will most probably be better off installing one of your choice yourself, as we may not update this section frequently enough.
         # Also it is likely the installation of an Ingress Controller will be removed completely from the chart
-        active: false
+        active: true
         nginx_image: nginx/nginx-ingress:1.4.6
         # the following variables are specific to each deployment
         # We used externalIP to expose Ingress on 80/443 port. On OpenStack internal IP of master node (10.*) worked for us.
         # Could be any node, but calls to the service have to be using it. In our case DNS entry is assigned to master's external IP
         # Use NodePort as an alternative (breaks Swagger)
-        external_ip: 10.1.1.1
+        external_ip: 172.19.128.1 #reachable cluster ip
         node_port: 30977
         # the following variables are specific to each deployment
         # use:
         # - scope=Cluster, if you want Ingress to listen to all namespaces (requires ClusterAdmin)
         # - scope= , if you want Ingress to listen only to its own namespace
-        scope: ""
+        scope: "Cluster"
         #
         #
