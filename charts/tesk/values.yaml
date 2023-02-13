@@ -77,7 +77,7 @@ ftp:
 #
 ingress:
 
-    active: true
+    active: false
     # The path, where TESK API will be exposed.
     # path: /tes
     path: "/tes"
