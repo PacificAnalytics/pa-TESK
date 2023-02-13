@@ -32,8 +32,8 @@ spec:
             fieldRef:
               fieldPath: metadata.name
         args:
-          - -nginx-configmaps=$(POD_NAMESPACE)/nginx-config
-         # - -default-server-tls-secret=$(POD_NAMESPACE)/default-server-secret
+          #- -nginx-configmaps=$(POD_NAMESPACE)/nginx-config
+          - -default-server-tls-secret=$(POD_NAMESPACE)/default-server-secret
          {{ if ne .Values.ingress.deploy_ingress.scope "Cluster" }}
           - -watch-namespace=$(POD_NAMESPACE)
          {{ end }}

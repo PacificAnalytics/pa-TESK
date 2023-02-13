@@ -54,10 +54,10 @@ service:
     # use:
     # - NodePort, if you want to expose API directly
     # - LoadBalancer for cloud provider (gcloud) or empty otherwise
-    #type: NodePort
-    #node_port: 31567
-    type: ""
-    node_port: ""
+    type: NodePort
+    node_port: 31567
+    #type: ""
+    #node_port: ""
 
 ftp:
     # If you need FTP configuration, choose one of the 2 methods of providing credentials
@@ -80,7 +80,7 @@ ingress:
     active: false
     # The path, where TESK API will be exposed.
     # path: /tes
-    path: "/tes"
+    path: "/"
     # If no TLS secret name configured, TLS will be switched off
     tls_secret_name:
     # Annotations for Ingress Resource.
@@ -107,6 +107,6 @@ ingress:
         # use:
         # - scope=Cluster, if you want Ingress to listen to all namespaces (requires ClusterAdmin)
         # - scope= , if you want Ingress to listen only to its own namespace
-        scope: "Cluster"
+        scope: ""
         #
         #

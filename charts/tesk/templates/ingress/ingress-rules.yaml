@@ -1,5 +1,5 @@
 {{ if .Values.ingress.active }}
-apiVersion: extensions/v1beta1
+apiVersion: extensions/v1
 kind: Ingress
 metadata:
   name: ingress-rules {{ if .Values.ingress.annotations }}
