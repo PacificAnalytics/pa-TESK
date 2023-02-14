@@ -80,7 +80,7 @@ ingress:
     active: false
     # The path, where TESK API will be exposed.
     # path: /tes
-    path: "/"
+    path: /
     # If no TLS secret name configured, TLS will be switched off
     tls_secret_name:
     # Annotations for Ingress Resource.
